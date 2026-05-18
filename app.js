@@ -15,13 +15,19 @@ function addTask() {
     const li = document.createElement('li');
     li.innerHTML = `
         <span>${taskText}</span>
+        <button class="delete-btn">X</button>
     `;
     
+    // Sự kiện xóa
+    li.querySelector('.delete-btn').addEventListener('click', function() {
+        li.remove();
+    });
+    
     taskList.appendChild(li);
-    taskInput.value = ''; // Xóa input
+    taskInput.value = ''; // Xóa input sau khi thêm
 }
 
-// Cho phép nhấn Enter
+// Nhấn Enter cũng thêm task
 taskInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') addTask();
 });
